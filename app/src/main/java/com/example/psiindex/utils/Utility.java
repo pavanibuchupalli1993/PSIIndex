@@ -57,7 +57,7 @@ public static String getRegionTitle(String title)
         return list;
     }
 
-    private static ArrayList<Reading> getReadingsEast(Readings readings) {
+    public static ArrayList<Reading> getReadingsEast(Readings readings) {
         ArrayList<Reading> readingDetails = new ArrayList<>();
 
         readingDetails.add(new Reading(APIConstants.co_eight_hour_max, readings.coEightHourMax.east.toString()));
@@ -76,7 +76,7 @@ public static String getRegionTitle(String title)
 
     }
 
-    private static ArrayList<Reading> getReadingsWest(Readings readings) {
+    public static ArrayList<Reading> getReadingsWest(Readings readings) {
         ArrayList<Reading> readingDetails = new ArrayList<>();
 
         readingDetails.add(new Reading(APIConstants.co_eight_hour_max, readings.coEightHourMax.west.toString()));
@@ -95,7 +95,7 @@ public static String getRegionTitle(String title)
 
     }
 
-    private static ArrayList<Reading> getReadingsNorth(Readings readings) {
+    public static ArrayList<Reading> getReadingsNorth(Readings readings) {
         ArrayList<Reading> readingDetails = new ArrayList<>();
 
         readingDetails.add(new Reading(APIConstants.co_eight_hour_max, readings.coEightHourMax.north.toString()));
@@ -114,7 +114,7 @@ public static String getRegionTitle(String title)
 
     }
 
-    private static  ArrayList<Reading> getReadingsSouth(Readings readings) {
+    public static  ArrayList<Reading> getReadingsSouth(Readings readings) {
         ArrayList<Reading> readingDetails = new ArrayList<>();
 
         readingDetails.add(new Reading(APIConstants.co_eight_hour_max, readings.coEightHourMax.south.toString()));
@@ -133,7 +133,7 @@ public static String getRegionTitle(String title)
 
     }
 
-    private static ArrayList<Reading> getReadingsCentral(Readings readings) {
+    public static ArrayList<Reading> getReadingsCentral(Readings readings) {
         ArrayList<Reading> readingDetails = new ArrayList<>();
 
         readingDetails.add(new Reading(APIConstants.co_eight_hour_max, readings.coEightHourMax.central.toString()));
