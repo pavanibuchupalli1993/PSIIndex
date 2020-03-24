@@ -1,15 +1,10 @@
 package com.example.psiindex;
 
-import com.example.psiindex.psi_model.PSIResponse;
+import com.example.psiindex.model.psimodel.PSIResponse;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
-import org.json.JSONException;
 import org.junit.Before;
 import org.mockito.MockitoAnnotations;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public class TestUtils {
     @Before

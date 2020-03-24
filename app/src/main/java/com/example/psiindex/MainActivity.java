@@ -7,11 +7,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.psiindex.adaptor.DisplayPSIReadingsDialogAdapter;
-import com.example.psiindex.dialog_model.CustomAlertDialog;
-import com.example.psiindex.dialog_model.DialogModel;
-import com.example.psiindex.psi_model.PSIResponse;
-import com.example.psiindex.psi_model.Reading;
-import com.example.psiindex.psi_model.RegionMetadatum;
+import com.example.psiindex.model.dialogmodel.CustomAlertDialog;
+import com.example.psiindex.model.dialogmodel.DialogModel;
+import com.example.psiindex.model.psimodel.PSIResponse;
+import com.example.psiindex.model.psimodel.Reading;
+import com.example.psiindex.model.psimodel.RegionMetadatum;
 import com.example.psiindex.utils.Utility;
 import com.example.psiindex.viewmodel.MainActivityViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;

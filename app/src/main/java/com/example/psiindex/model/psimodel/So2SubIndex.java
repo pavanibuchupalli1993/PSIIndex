@@ -1,10 +1,10 @@
 
-package com.example.psiindex.psi_model;
+package com.example.psiindex.model.psimodel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class So2TwentyFourHourly {
+public class So2SubIndex {
 
     @SerializedName("west")
     @Expose

@@ -1,28 +1,28 @@
 
-package com.example.psiindex.psi_model;
+package com.example.psiindex.model.psimodel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CoEightHourMax {
+public class Pm10TwentyFourHourly {
 
     @SerializedName("west")
     @Expose
-    public Double west;
+    public Integer west;
     @SerializedName("national")
     @Expose
-    public Double national;
+    public Integer national;
     @SerializedName("east")
     @Expose
-    public Double east;
+    public Integer east;
     @SerializedName("central")
     @Expose
-    public Double central;
+    public Integer central;
     @SerializedName("south")
     @Expose
-    public Double south;
+    public Integer south;
     @SerializedName("north")
     @Expose
-    public Double north;
+    public Integer north;
 
 }

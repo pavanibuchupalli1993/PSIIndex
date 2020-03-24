@@ -1,5 +1,5 @@
 
-package com.example.psiindex.psi_model;
+package com.example.psiindex.model.psimodel;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

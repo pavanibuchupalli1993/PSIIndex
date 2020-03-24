@@ -1,13 +1,12 @@
 package com.example.psiindex.viewmodel;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.psiindex.psi_model.PSIResponse;
+import com.example.psiindex.model.psimodel.PSIResponse;
 import com.example.psiindex.repository.PSIApiDataRepository;
 
 import retrofit2.Call;

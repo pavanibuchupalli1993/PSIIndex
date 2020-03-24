@@ -1,28 +1,25 @@
 package com.example.psiindex.utils;
 
 import com.example.psiindex.api.APIConstants;
-import com.example.psiindex.psi_model.Reading;
-import com.example.psiindex.psi_model.Readings;
+import com.example.psiindex.model.psimodel.Reading;
+import com.example.psiindex.model.psimodel.Readings;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Utility {
 
     /**
      * Split string for delimiter :
      */
-public static String getRegionTitle(String title)
-{
-    if(title!=null) {
-        String[] titleParts = title.split(":");
-        return titleParts[1].trim();
-    }else
-    {
-        return null;
-    }
+    public static String getRegionTitle(String title) {
+        if (title != null) {
+            String[] titleParts = title.split(":");
+            return titleParts[1].trim();
+        } else {
+            return null;
+        }
 
-}
+    }
 
     /**
      * Return psi index details for selected region.
@@ -114,7 +111,7 @@ public static String getRegionTitle(String title)
 
     }
 
-    public static  ArrayList<Reading> getReadingsSouth(Readings readings) {
+    public static ArrayList<Reading> getReadingsSouth(Readings readings) {
         ArrayList<Reading> readingDetails = new ArrayList<>();
 
         readingDetails.add(new Reading(APIConstants.co_eight_hour_max, readings.coEightHourMax.south.toString()));

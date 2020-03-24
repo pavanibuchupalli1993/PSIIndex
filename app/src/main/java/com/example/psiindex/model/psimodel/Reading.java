@@ -1,4 +1,4 @@
-package com.example.psiindex.psi_model;
+package com.example.psiindex.model.psimodel;
 
 public class Reading {
    public String title;

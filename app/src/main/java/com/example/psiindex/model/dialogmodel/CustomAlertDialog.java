@@ -1,4 +1,4 @@
-package com.example.psiindex.dialog_model;
+package com.example.psiindex.model.dialogmodel;
 
 import android.app.Activity;
 import android.app.Dialog;
