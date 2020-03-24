@@ -6,42 +6,44 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-import com.example.psiindex.api.ApiClient;
-import com.example.psiindex.api.PSIApiService;
-import com.example.psiindex.model.PSIResponse;
+import com.example.psiindex.psi_model.PSIResponse;
 import com.example.psiindex.repository.PSIApiDataRepository;
 
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Function;
-import io.reactivex.observers.DisposableSingleObserver;
-import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivityViewModel extends AndroidViewModel {
 
-    public MutableLiveData<PSIResponse> response=new MutableLiveData<>();
-    private CompositeDisposable disposable = new CompositeDisposable();
-    private PSIApiService apiService;
+    public MutableLiveData<PSIResponse> PSIResponse = new MutableLiveData<>();
     private PSIApiDataRepository psiApiDataRepository;
 
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
-
     }
 
-    public void fetchPSIIndexInfo()
-    {
-        if (response != null){
-            return;
-        }
+    public void fetchPSIData() {
+
         psiApiDataRepository = PSIApiDataRepository.getInstance(getApplication());
-        response = psiApiDataRepository.fetchPSIData();
 
+        psiApiDataRepository.apiService.getPSIInfo().enqueue(new Callback<PSIResponse>() {
+            @Override
+            public void onResponse(Call<PSIResponse> call,
+                                   Response<PSIResponse> response) {
+                if (response.isSuccessful()) {
+                    PSIResponse.setValue(response.body());
+                } else {
+                    PSIResponse.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PSIResponse> call, Throwable t) {
+
+                PSIResponse.setValue(null);
+            }
+        });
     }
-
-
 
 }
