@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 
 public interface PSIApiService {
 
-    @GET(value = "PSI")
+    @GET(value = "psi")
     public Call<PSIResponse> getPSIInfo();
 
 }
