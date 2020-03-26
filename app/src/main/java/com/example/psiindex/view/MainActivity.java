@@ -1,4 +1,4 @@
-package com.example.psiindex;
+package com.example.psiindex.view;
 
 import android.os.Bundle;
 
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.psiindex.R;
 import com.example.psiindex.adaptor.DisplayPSIReadingsDialogAdapter;
 import com.example.psiindex.model.dialogmodel.CustomAlertDialog;
 import com.example.psiindex.model.dialogmodel.DialogModel;
