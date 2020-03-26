@@ -20,10 +20,10 @@ public class ApiClient {
     private static int REQUEST_TIMEOUT = 60;
     private static OkHttpClient okHttpClient;
 
-    public static Retrofit getClient(Context context) {
+    public static Retrofit getClient() {
 
         if (okHttpClient == null)
-            initOkHttp(context);
+            initOkHttp();
 
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
@@ -36,7 +36,7 @@ public class ApiClient {
         return retrofit;
     }
 
-    private static void initOkHttp(final Context context) {
+    private static void initOkHttp() {
         OkHttpClient.Builder httpClient = new OkHttpClient().newBuilder()
                 .connectTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)

@@ -1,4 +1,4 @@
-package com.example.psiindex.model.dialogmodel;
+package com.example.psiindex.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -10,7 +10,7 @@ import com.example.psiindex.R;
 /**
  * App Dialogs Model
  */
-public class DialogModel {
+public class DialogUtils {
 
     private AlertDialog dialog;
 

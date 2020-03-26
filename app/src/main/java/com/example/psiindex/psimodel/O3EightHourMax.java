@@ -1,10 +1,10 @@
 
-package com.example.psiindex.model.psimodel;
+package com.example.psiindex.psimodel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PsiTwentyFourHourly {
+public class O3EightHourMax {
 
     @SerializedName("west")
     @Expose

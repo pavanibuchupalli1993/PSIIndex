@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.psiindex.R;
-import com.example.psiindex.model.psimodel.Reading;
+import com.example.psiindex.psimodel.Reading;
 
 import java.util.ArrayList;
 

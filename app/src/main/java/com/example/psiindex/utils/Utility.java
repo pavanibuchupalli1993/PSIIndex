@@ -1,8 +1,8 @@
 package com.example.psiindex.utils;
 
 import com.example.psiindex.api.APIConstants;
-import com.example.psiindex.model.psimodel.Reading;
-import com.example.psiindex.model.psimodel.Readings;
+import com.example.psiindex.psimodel.Reading;
+import com.example.psiindex.psimodel.Readings;
 
 import java.util.ArrayList;
 

@@ -8,11 +8,11 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.psiindex.R;
 import com.example.psiindex.adaptor.DisplayPSIReadingsDialogAdapter;
-import com.example.psiindex.model.dialogmodel.CustomAlertDialog;
-import com.example.psiindex.model.dialogmodel.DialogModel;
-import com.example.psiindex.model.psimodel.PSIResponse;
-import com.example.psiindex.model.psimodel.Reading;
-import com.example.psiindex.model.psimodel.RegionMetadatum;
+import com.example.psiindex.utils.CustomAlertDialog;
+import com.example.psiindex.utils.DialogUtils;
+import com.example.psiindex.psimodel.PSIResponse;
+import com.example.psiindex.psimodel.Reading;
+import com.example.psiindex.psimodel.RegionMetadatum;
 import com.example.psiindex.utils.Utility;
 import com.example.psiindex.viewmodel.MainActivityViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleMap googleMap;
     private MainActivityViewModel viewModel;
     private PSIResponse psiData;
-    private DialogModel dialogModel=new DialogModel();
+    private DialogUtils dialogModel=new DialogUtils();
     private CustomAlertDialog customAlertDialogg;
 
     @Override
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
      * add Observers
      */
     private void addObservers() {
-        viewModel.PSIResponse.observe(this, new Observer<PSIResponse>() {
+        viewModel.getPsiResponse().observe(this, new Observer<PSIResponse>() {
             @Override
             public void onChanged(PSIResponse psiResponse) {
 

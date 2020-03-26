@@ -1,9 +1,10 @@
 
-package com.example.psiindex.model.psimodel;
+package com.example.psiindex.psimodel;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class PSIResponse {
 
@@ -13,8 +14,5 @@ public class PSIResponse {
     @SerializedName("items")
     @Expose
     public List<Item> items = null;
-    @SerializedName("api_info")
-    @Expose
-    public ApiInfo apiInfo;
 
 }

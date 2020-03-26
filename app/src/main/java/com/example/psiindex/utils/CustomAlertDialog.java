@@ -1,4 +1,4 @@
-package com.example.psiindex.model.dialogmodel;
+package com.example.psiindex.utils;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -13,7 +13,6 @@ import com.example.psiindex.R;
 public class CustomAlertDialog extends Dialog {
 
     public Activity activity;
-    public Dialog dialog;
     RecyclerView.Adapter adapter;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;

@@ -1,6 +1,6 @@
 package com.example.psiindex;
 
-import com.example.psiindex.model.psimodel.PSIResponse;
+import com.example.psiindex.psimodel.PSIResponse;
 import com.google.gson.Gson;
 
 import org.junit.Before;

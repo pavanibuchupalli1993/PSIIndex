@@ -1,8 +1,8 @@
 package com.example.psiindex;
 
 import com.example.psiindex.api.APIConstants;
-import com.example.psiindex.model.psimodel.PSIResponse;
-import com.example.psiindex.model.psimodel.Reading;
+import com.example.psiindex.psimodel.PSIResponse;
+import com.example.psiindex.psimodel.Reading;
 import com.example.psiindex.utils.Utility;
 
 import org.junit.Assert;
