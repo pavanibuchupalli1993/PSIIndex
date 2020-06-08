@@ -1,21 +1,27 @@
-package com.example.psiindex.viewmodel;
+package com.example.psiindex.presenter;
+
+import android.content.Context;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.psiindex.psimodel.PSIResponse;
 import com.example.psiindex.repository.PSIApiDataRepository;
+import com.example.psiindex.view.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivityViewModel extends ViewModel {
+public class MainActivityPresenter  {
 
-    private MutableLiveData<PSIResponse> psiResponse = new MutableLiveData<>();
     private PSIApiDataRepository psiApiDataRepository;
+    private MainActivity context;
 
-
+public MainActivityPresenter(MainActivity context)
+{
+    this.context=context;
+}
     public void fetchPSIData() {
 
         psiApiDataRepository = PSIApiDataRepository.getInstance();
@@ -25,23 +31,20 @@ public class MainActivityViewModel extends ViewModel {
             public void onResponse(Call<PSIResponse> call,
                                    Response<PSIResponse> response) {
                 if (response.isSuccessful()) {
-                    psiResponse.postValue(response.body());
+                    context.setResponseData(response.body());
                 } else {
-                    psiResponse.postValue(null);
+                    context.setResponseData(null);
                 }
             }
 
             @Override
             public void onFailure(Call<PSIResponse> call, Throwable t) {
 
-                psiResponse.postValue(null);
+                context.setResponseData(null);
             }
         });
     }
 
-    public MutableLiveData<PSIResponse> getPsiResponse()
-    {
-        return psiResponse;
-    }
+
 
 }
