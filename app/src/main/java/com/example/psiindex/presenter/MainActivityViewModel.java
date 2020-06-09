@@ -13,12 +13,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivityPresenter  {
+public class MainActivityViewModel extends ViewModel {
 
     private PSIApiDataRepository psiApiDataRepository;
     private MainActivity context;
+    private MutableLiveData<PSIResponse> psiResponse=new MutableLiveData<>();
 
-public MainActivityPresenter(MainActivity context)
+public MainActivityViewModel(MainActivity context)
 {
     this.context=context;
 }
@@ -31,20 +32,23 @@ public MainActivityPresenter(MainActivity context)
             public void onResponse(Call<PSIResponse> call,
                                    Response<PSIResponse> response) {
                 if (response.isSuccessful()) {
-                    context.setResponseData(response.body());
+                   psiResponse.setValue(response.body());
                 } else {
-                    context.setResponseData(null);
+                    psiResponse.setValue(null);
                 }
             }
 
             @Override
             public void onFailure(Call<PSIResponse> call, Throwable t) {
 
-                context.setResponseData(null);
+                psiResponse.setValue(null);
             }
         });
     }
 
-
+    public MutableLiveData<PSIResponse> getPsiResponse()
+    {
+        return psiResponse;
+    }
 
 }

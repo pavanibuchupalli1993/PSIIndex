@@ -15,7 +15,7 @@ import com.example.psiindex.psimodel.PSIResponse;
 import com.example.psiindex.psimodel.Reading;
 import com.example.psiindex.psimodel.RegionMetadatum;
 import com.example.psiindex.utils.Utility;
-import com.example.psiindex.presenter.MainActivityPresenter;
+import com.example.psiindex.presenter.MainActivityViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,11 +26,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements MainactivityInterface,OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     private SupportMapFragment mapFragment;
     private GoogleMap googleMap;
-    private MainActivityPresenter presenter;
+    private MainActivityViewModel viewModel;
     private PSIResponse psiData;
     private DialogUtils dialogModel=new DialogUtils();
     private CustomAlertDialog customAlertDialogg;
@@ -42,13 +42,42 @@ public class MainActivity extends AppCompatActivity implements MainactivityInter
         mapFragment = ((SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map));
 
-        presenter=new MainActivityPresenter(this);
+        viewModel= ViewModelProviders.of(this).get(MainActivityViewModel.class);
+
         //initializing google map
         mapFragment.getMapAsync(this);
 
+        addObservers();
 
     }
 
+
+    private void  addObservers()
+    {
+        viewModel.getPsiResponse().observe(this, new Observer<PSIResponse>() {
+            @Override
+            public void onChanged(PSIResponse psiResponse) {
+                displayProgressDialog(false);
+
+                if (psiResponse != null) {
+                    psiData = psiResponse;
+
+                    LatLng latLng = null;
+                    for (RegionMetadatum regionMetadatum : psiResponse.regionMetadata) {
+                        if (!regionMetadatum.name.equalsIgnoreCase(getString(R.string.national_string))) {
+                            latLng = new LatLng(regionMetadatum.labelLocation.latitude, regionMetadatum.labelLocation.longitude);
+                            addMarkers(latLng, regionMetadatum.name);
+                        }
+                    }
+
+                    if (latLng != null)
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f));
+                } else {
+                    displayInfoDialog(getString(R.string.error_msg));
+                }
+            }
+        });
+    }
     /**
      * add marker on google map.
      */
@@ -64,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements MainactivityInter
     @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap=googleMap;
-        presenter.fetchPSIData();
+        viewModel.fetchPSIData();
         displayProgressDialog(true);
     }
 
@@ -106,25 +135,4 @@ public class MainActivity extends AppCompatActivity implements MainactivityInter
         }
     }
 
-    @Override
-    public void setResponseData(PSIResponse psiResponse) {
-        displayProgressDialog(false);
-
-        if (psiResponse != null) {
-            psiData = psiResponse;
-
-            LatLng latLng = null;
-            for (RegionMetadatum regionMetadatum : psiResponse.regionMetadata) {
-                if (!regionMetadatum.name.equalsIgnoreCase(getString(R.string.national_string))) {
-                    latLng = new LatLng(regionMetadatum.labelLocation.latitude, regionMetadatum.labelLocation.longitude);
-                    addMarkers(latLng, regionMetadatum.name);
-                }
-            }
-
-            if (latLng != null)
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f));
-        } else {
-            displayInfoDialog(getString(R.string.error_msg));
-        }
-    }
 }
